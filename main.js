@@ -5,6 +5,7 @@ const phoneNumber = document.querySelector('#phoneNumber');
 const btnSubmit = document.querySelector('#btn-submit');
 const table = document.querySelector('table');
 const tableTbody = document.querySelector('table tbody');
+const theme = document.getElementById('theme');
 
 class Contact {
     constructor(firstName, _lastName, _phoneNumber) {
@@ -72,6 +73,7 @@ class Store {
     static addContact(contact) {
         const contacts = Store.getContacts();
         contacts.push(contact);
+        console.log('Adding to local storage');
         localStorage.setItem('contacts', JSON.stringify(contacts));
     }
 
@@ -98,7 +100,7 @@ btnSubmit.addEventListener('click', (e) => {
     }
     else {
         UI.addContactToList(contact);
-        Store.addcontact(contact);
+        Store.addContact(contact);
         UI.showAlert('Added Contact', 'success');
         UI.clearFields();
     }
